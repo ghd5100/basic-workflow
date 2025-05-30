@@ -6,14 +6,14 @@ on:
   workflow_dispatch
 
 jobs:
-  vars-context-check:
+  check-vars-context:
     runs-on: ubuntu-latest
     steps:
       - name: "Hello, Var_Test"
       ### 깃헙에 생성한 밸류값 쓰기
         run: echo "Hello, ${{ vars.VAR_TEST }}"
 
-  check-context-check:
+  check-sevret-context:
     runs-on: ubuntu-latest
     steps:
       - name: "Hello, SECRET_TEST"
