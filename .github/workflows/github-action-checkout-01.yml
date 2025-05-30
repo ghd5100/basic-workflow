@@ -12,8 +12,14 @@ jobs:
       - name: Print ls
         run: ls -al
 
-      - name: Github Actions Checkout
+      - name: Github Actions Checkout (others repository)
         uses: actions/checkout@v4
         with:
           path: checkout-dir
+
+      - name: Github Actions Checkout (others repository)
+        uses: actions/checkout@v4
+        with:
+          respository: actions/checkout
+          path: other-repo
       - run: ls -al
