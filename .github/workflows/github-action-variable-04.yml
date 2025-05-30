@@ -3,6 +3,18 @@
 name: Test Github Actions variable-04
 run-name: Run Github Actions inputs, outputs, needs
 on:
-  workflow_dispatch
+  workflow_dispatch:
+  ### workflow_dispatch로 실행되면 인풋 받는 내용
+    inputs:
+      name:
+       description: '이름'
+       ###변수 필수이면 true 
+       required: true
+       default: 'INPUT'
 
-
+jobs:
+  input-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print input data
+        run: echo "Hello, ${{ github.event.inputs.name }}"
