@@ -5,27 +5,27 @@ name: Test Github Actions variable-01
 on:
   workflow_dispatch
 
-### 전역변수
 env: 
   DAY_OF_WEEK: Friday
 
 jobs:
   check-var:
     runs-on: ubuntu-latest
-    ### 지역변수
     env:
       MESSAGE: Hello
     steps:
       - name: "It's Day!"
-        if: ${{env.DAY_OF_WEEK == 'Thursday'}}
+        if: ${{ env.DAY_OF_WEEK == 'Friday' }}
         run: echo "$MESSAGE, Today is $DAY_OF_WEEK!"
-        
+
   check-var2:
     runs-on: ubuntu-latest
+    env:
+      MESSAGE: Hello
     steps:
       - name: "It's Day!"
         run: echo "$MESSAGE, Today is $DAY_OF_WEEK!"
-        
+
   check-var3:
     runs-on: ubuntu-latest
     strategy:
@@ -33,16 +33,13 @@ jobs:
         fruit: [Apple, Banana, Kiwi]
     steps:
       - name: "It's fruits!"
-        run: echo "Hello, ${{ matrix.fruits }}}"
+        run: echo "Hello, ${{ matrix.fruit }}"
 
   check-var4:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        fruit: [Apple, Banana, Kiwi]
     steps:
       - name: "It's fruits!"
-        run:  | 
-          for fruit Apple Banana Kiwi; do
+        run: |
+          for fruit in Apple Banana Kiwi; do
             echo "hello, $fruit!"
           done
