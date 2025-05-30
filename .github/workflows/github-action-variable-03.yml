@@ -5,8 +5,6 @@ run-name: Run Github Actions var, secret
 on:
   workflow_dispatch
 
-
-
 jobs:
   vars-context-check:
     runs-on: ubuntu-latest
@@ -14,3 +12,10 @@ jobs:
       - name: "Hello, Var_Test"
       ### 깃헙에 생성한 밸류값 쓰기
         run: echo "Hello, ${{ vars.VAR_TEST }}"
+
+  check-context-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Hello, SECRET_TEST"
+      ### 깃헙에 생성한 시크릿값 쓰기
+        run: echo "Hello, ${{ secrets.SECRET_TEST }}"
