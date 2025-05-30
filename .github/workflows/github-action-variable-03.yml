@@ -1,0 +1,16 @@
+### github-action-variable-03.yml
+
+name: Test Github Actions variable-03
+run-name: Run Github Actions var, secret
+on:
+  workflow_dispatch
+
+
+
+jobs:
+  vars-context-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Hello, Var_Test"
+      ### 깃헙에 생성한 밸류값 쓰기
+        run: echo "Hello, ${{ vars.VAR_TEST }}"
