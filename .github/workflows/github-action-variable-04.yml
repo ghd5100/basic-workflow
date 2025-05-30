@@ -32,4 +32,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print output data
-        run: echo "Hello, ${{ needs.output-data.outputs.upper_name} }"
+        run: echo "Hello, ${{ needs.output-data.outputs.upper_name}}"
