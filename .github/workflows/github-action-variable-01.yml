@@ -19,8 +19,18 @@ jobs:
       - name: "It's Day!"
         if: ${{env.DAY_OF_WEEK == 'Thursday'}}
         run: echo "$MESSAGE, Today is $DAY_OF_WEEK!"
+        
   check-var2:
     runs-on: ubuntu-latest
     steps:
       - name: "It's Day!"
         run: echo "$MESSAGE, Today is $DAY_OF_WEEK!"
+        
+  check-var3:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        fruit: [Apple, Banana, Kiwi]
+    steps:
+      - name: "It's fruits!"
+        run: echo "Hello, ${{ matrix.fruits }}}"
