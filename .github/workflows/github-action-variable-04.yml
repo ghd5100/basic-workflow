@@ -28,6 +28,7 @@ jobs:
 
   ### output 데이터가 먼저 끝이 나야지 변수확인할수있도록 needs사용
   print-data:
+    needs: output-data
     runs-on: ubuntu-latest
     steps:
       - name: Print output data
