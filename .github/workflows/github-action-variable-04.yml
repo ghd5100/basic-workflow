@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       name:
-       description: '이름-영소문자'
-       required: true
-       default: 'input'
+        description: '이름-영소문자'
+        required: true
+        default: 'input'
 
 jobs:
   input-data:
@@ -20,16 +20,15 @@ jobs:
   output-data:
     runs-on: ubuntu-latest
     outputs:
-      upper_name: ${{ steps.uppercase.outs.result }}
+      upper_name: ${{ steps.uppercase.outputs.result }}
     steps:
-      - name: Print input data
+      - name: Convert to uppercase
         id: uppercase
-        run: echo "result = $(echo '${{ github.event.inputs.name }}' | tr 'a-z' 'A-Z')" >> $GITHUB_OUTPUT
+        run: echo "result=$(echo '${{ github.event.inputs.name }}' | tr 'a-z' 'A-Z')" >> $GITHUB_OUTPUT
 
-  ### output 데이터가 먼저 끝이 나야지 변수확인할수있도록 needs사용
   print-data:
     needs: output-data
     runs-on: ubuntu-latest
     steps:
       - name: Print output data
-        run: echo "Hello, ${{ needs.output-data.outputs.upper_name}}"
+        run: echo "Hello, ${{ needs.output-data.outputs.upper_name }}"
